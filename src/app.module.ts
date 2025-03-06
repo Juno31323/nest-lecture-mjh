@@ -15,6 +15,11 @@ import { BldgModule } from './bldg/bldg.module';
       database: process.env.CLOUDSQL_DB,
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: false,
+      extra: { 
+        // Cloud SQL Unix socket 경로 설정 
+         socketPath: `/cloudsql/${process.env.CLOUDSQL_CONNECTION_NAME}`, 
+      },
+      
     }),
     BldgModule,
     ],
